@@ -51,10 +51,10 @@ onBeforeUnmount(() => {
 <style scoped>
 .label{
   font-size: 15px;
+  margin-bottom: 30px;
 }
 .select_button{
   margin-bottom: 5px;
-  margin-top: 15px;
 }
 .select_bg{
   height: 100vh;
