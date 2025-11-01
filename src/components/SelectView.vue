@@ -1,12 +1,54 @@
 <template>
   <div class="select_bg">
-    <Button class="select_button" icon="pi pi-plus" rounded/>
+    <Button class="select_button" icon="pi pi-plus" rounded size="large" variant="text"/>
     <div class="label">添加或拖拽文件/目录到这里</div>
   </div>
+
+  <Dialog v-model:visible="visible" modal header="无法识别" :style="{ width: '20rem' }" :closable="false">
+    当前的文件无法被处理
+    <div class="flex justify-end gap-2">
+        <Button type="button" label="好的"  @click="visible = false" size="small"></Button>
+    </div>
+</Dialog>
 </template>
 
 <script lang="ts" setup>
-import { Button } from 'primevue';
+import { listen } from '@tauri-apps/api/event';
+import { Button, Dialog } from 'primevue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import store from '../store';
+
+let visible=ref(false);
+
+let unlisten: any;
+
+onMounted(async () => {
+  unlisten = await listen('tauri://drag-drop', (event: any) => {
+    console.log(event);
+    
+    const payload = event?.payload;
+
+    if (
+      payload &&
+      typeof payload === 'object' &&
+      Array.isArray(payload.paths) &&
+      typeof payload.paths[0] === 'string'
+    ) {
+      const file = payload.paths[0];
+      
+      if(!file.toLowerCase().endsWith(".HEIC")){
+        visible.value=true;
+        return;
+      }
+
+      store().path=file;
+    }
+  });
+});
+
+onBeforeUnmount(() => {
+  if (unlisten) unlisten();
+});
 </script>
 
 <style scoped>
@@ -14,7 +56,8 @@ import { Button } from 'primevue';
   font-size: 15px;
 }
 .select_button{
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 .select_bg{
   height: 100vh;
