@@ -24,10 +24,7 @@ let unlisten: any;
 
 onMounted(async () => {
   unlisten = await listen('tauri://drag-drop', (event: any) => {
-    console.log(event);
-    
     const payload = event?.payload;
-
     if (
       payload &&
       typeof payload === 'object' &&
@@ -36,7 +33,7 @@ onMounted(async () => {
     ) {
       const file = payload.paths[0];
       
-      if(!file.toLowerCase().endsWith(".HEIC")){
+      if(!file.toLowerCase().endsWith(".heic")){
         visible.value=true;
         return;
       }
