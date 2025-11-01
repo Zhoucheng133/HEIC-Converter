@@ -5,7 +5,7 @@ import "./style/main.css";
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 import { definePreset } from "@primeuix/themes";
-import 'primeicons/primeicons.css'
+import 'primeicons/primeicons.css';
 
 const pinia = createPinia()
 const color="cyan";
@@ -36,5 +36,4 @@ app.use(PrimeVue, {
     preset: MyPreset
   }
 });
-
 app.mount('#app')
