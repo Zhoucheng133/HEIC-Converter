@@ -16,6 +16,7 @@
 import { listen } from '@tauri-apps/api/event';
 import { Button, Dialog } from 'primevue';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { invoke } from '@tauri-apps/api/core';
 import store from '../store';
 
 let visible=ref(false);
@@ -23,7 +24,7 @@ let visible=ref(false);
 let unlisten: any;
 
 onMounted(async () => {
-  unlisten = await listen('tauri://drag-drop', (event: any) => {
+  unlisten = await listen('tauri://drag-drop', async (event: any) => {
     const payload = event?.payload;
     if (
       payload &&
@@ -32,13 +33,18 @@ onMounted(async () => {
       typeof payload.paths[0] === 'string'
     ) {
       const file = payload.paths[0];
-      
-      if(!file.toLowerCase().endsWith(".heic")){
-        visible.value=true;
-        return;
-      }
 
-      store().path=file;
+      const type = await invoke('check_path', { path: file });
+
+      if(type=="file"){
+        if(!file.toLowerCase().endsWith(".heic")){
+          visible.value=true;
+          return;
+        }
+      }
+      
+
+      // store().path=file;
     }
   });
 });
