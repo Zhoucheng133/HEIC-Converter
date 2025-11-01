@@ -1,6 +1,6 @@
 <template>
   <div class="select_bg">
-    拖拽文件/目录到这里
+    <div class="label">拖拽文件/目录到这里</div>
   </div>
 </template>
 
@@ -14,5 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  flex-direction: column;
 }
 </style>
