@@ -42,9 +42,7 @@ onMounted(async () => {
           return;
         }
       }
-      
-
-      // store().path=file;
+      store().path=file;
     }
   });
 });
