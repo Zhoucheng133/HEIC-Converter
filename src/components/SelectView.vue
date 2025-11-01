@@ -17,6 +17,7 @@ import { listen } from '@tauri-apps/api/event';
 import { Button, Dialog } from 'primevue';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
+import { Command } from '@tauri-apps/plugin-shell';
 import store from '../store';
 
 let visible=ref(false);
@@ -41,6 +42,14 @@ onMounted(async () => {
           visible.value=true;
           return;
         }
+
+        const command = Command.sidecar("binaries/core", [
+          file,
+          "/Users/zhoucheng/Downloads/输出",
+        ])
+        const output = await command.execute();
+        console.log(output);
+        
       }
       store().path=file;
     }
