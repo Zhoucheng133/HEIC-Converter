@@ -4,7 +4,7 @@
       <ButtonGroup class="w-full">
         <Button label="转换" icon="pi pi-play" size="small" class="flex-1" />
         <Button label="停止" icon="pi pi-stop" size="small" class="flex-1" />
-        <Button label="关闭" icon="pi pi-times" size="small" class="flex-1" />
+        <Button label="关闭" icon="pi pi-times" size="small" class="flex-1" @click="closeFiles" />
       </ButtonGroup>
     </div>
     <div class="content">
@@ -33,6 +33,10 @@
 import store from '../store';
 import TaskItem from './TaskItem.vue';
 import { Checkbox, InputText, Button, InputGroup, ButtonGroup } from 'primevue';
+
+const closeFiles=()=>{
+  store().files=[];
+}
 </script>
 
 <style scoped>
