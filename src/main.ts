@@ -6,6 +6,7 @@ import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 import { definePreset } from "@primeuix/themes";
 import 'primeicons/primeicons.css';
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 const pinia = createPinia()
 const color="cyan";
