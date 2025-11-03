@@ -61,7 +61,6 @@ const closeFiles=()=>{
 
 <style scoped>
 .output_area{
-  margin-top: 10px;
   display: flex;
 }
 .options{
@@ -73,13 +72,14 @@ const closeFiles=()=>{
 }
 .content{
   overflow: scroll;
-  margin-top: 10px;
 }
 .list_page{
   padding: 10px;
   user-select: none;
   -webkit-user-select: none;
   display: grid;
+  grid-template-rows: 40px auto 40px 40px;
+  gap: 10px;
   height: 100vh;
   overflow: hidden;
 }
