@@ -60,7 +60,7 @@ export async function runConvert(filePath: string, outputPath: string, override:
     filePath,
     outputPath,
     "--quality",
-    quality,
+    String(quality),
   ]
 
   if(override){
@@ -71,10 +71,7 @@ export async function runConvert(filePath: string, outputPath: string, override:
     args.push("--no-exif");
   }
 
-  const command = Command.sidecar("binaries/core", [
-    filePath,
-    outputPath,
-  ])
+  const command = Command.sidecar("binaries/core", args)
   const output = await command.execute();
   if(output.stdout.includes("Skipped")){
     return ConvertStatus.exist;
