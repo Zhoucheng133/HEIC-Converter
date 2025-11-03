@@ -2,7 +2,7 @@ import { Command } from "@tauri-apps/plugin-shell";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-enum ConvertStatus{
+export enum ConvertStatus{
   wait,
   done,
   exist,

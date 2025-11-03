@@ -1,7 +1,7 @@
 <template>
   <div class="select_bg">
-    <Button class="select_button" icon="pi pi-plus" rounded size="large" variant="text"/>
-    <div class="label">添加或拖拽文件/目录到这里</div>
+    <i class="pi pi-upload"></i>
+    <div class="label">拖拽文件/目录到这里</div>
   </div>
 
   <Dialog v-model:visible="visible" modal header="无法识别" :style="{ width: '20rem' }" :closable="false">
@@ -17,6 +17,7 @@ import { listen } from '@tauri-apps/api/event';
 import { Button, Dialog } from 'primevue';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
+import store, { ConvertStatus } from '../store';
 
 let visible=ref(false);
 
@@ -34,14 +35,21 @@ onMounted(async () => {
       const targets = payload.paths;
 
       const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
-
+      
+      // TODO remove this after
       console.log(resolveFiles);
       
-
       if(resolveFiles.length==0){
         visible.value=true;
         return;
       }
+
+      store().files=resolveFiles.map((item)=>{
+        return {
+          path: item,
+          status: ConvertStatus.wait,
+        }
+      });
       
     }
   });
@@ -56,6 +64,7 @@ onBeforeUnmount(() => {
 .label{
   font-size: 15px;
   margin-bottom: 30px;
+  margin-top: 15px;
 }
 .select_button{
   margin-bottom: 5px;
