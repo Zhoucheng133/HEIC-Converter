@@ -21,11 +21,14 @@ export default defineStore("store", ()=>{
   let override=ref(false);
   let outputDir=ref("");
 
+  let running=ref(false);
+
   return {
     files,
     useExif,
     override,
-    outputDir
+    outputDir,
+    running
   };
 })
 
