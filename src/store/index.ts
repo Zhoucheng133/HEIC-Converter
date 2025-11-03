@@ -24,16 +24,25 @@ export default defineStore("store", ()=>{
 
   let running=ref(false);
 
+  const convertHandler=async ()=>{
+    running.value=true;
+    for (const item of files.value) {
+      item.status=await runConvert(item.path, outputDir.value, override.value, useExif.value);
+    }
+    running.value=false;
+  }
+
   return {
     files,
     useExif,
     override,
     outputDir,
-    running
+    running,
+    convertHandler
   };
 })
 
-export async function runConvert(filePath: string, outputPath: string, override: boolean, { quality=80 }, exif: boolean): Promise<ConvertStatus> {
+export async function runConvert(filePath: string, outputPath: string, override: boolean, exif: boolean, quality: number=80): Promise<ConvertStatus> {
 
   let args=[
     filePath,
