@@ -82,7 +82,9 @@ export async function runConvert(filePath: string, outputPath: string, override:
     args.push("--no-exif");
   }
 
-  const command = Command.sidecar("binaries/core", args)
+  const command = Command.sidecar("binaries/core", args, {
+    encoding: "utf-8"
+  })
   const output = await command.execute();
   if(output.stdout.includes("Skipped")){
     return ConvertStatus.exist;
