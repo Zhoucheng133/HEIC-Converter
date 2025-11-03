@@ -36,9 +36,6 @@ onMounted(async () => {
 
       const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
       
-      // TODO remove this after
-      console.log(resolveFiles);
-      
       if(resolveFiles.length==0){
         visible.value=true;
         return;

@@ -16,7 +16,17 @@ interface TaskItem{
 
 export default defineStore("store", ()=>{
   let files=ref<TaskItem[]>([]);
-  return { files };
+
+  let useExif=ref(true);
+  let override=ref(false);
+  let outputDir=ref("");
+
+  return {
+    files,
+    useExif,
+    override,
+    outputDir
+  };
 })
 
 export async function runConvert(filePath: string, outputPath: string, override: boolean, { quality=80 }, exif: boolean): Promise<ConvertStatus> {
