@@ -68,8 +68,8 @@ export default defineStore("store", ()=>{
 export async function runConvert(filePath: string, outputPath: string, override: boolean, exif: boolean, quality: number=80): Promise<ConvertStatus> {
 
   let args=[
-    filePath,
-    outputPath,
+    `"${filePath}"`,
+    `"${outputPath}"`,
     "--quality",
     String(quality),
   ]
