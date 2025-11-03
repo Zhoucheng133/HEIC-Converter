@@ -25,10 +25,21 @@ export default defineStore("store", ()=>{
   let running=ref(false);
 
   const convertHandler=async ()=>{
+    if(running.value){
+      return;
+    }
     running.value=true;
     for (const item of files.value) {
-      item.status=await runConvert(item.path, outputDir.value, override.value, useExif.value);
+      if(running.value){
+        item.status=await runConvert(item.path, outputDir.value, override.value, useExif.value);
+      }else{
+        break;
+      }
     }
+    running.value=false;
+  }
+
+  const stop=()=>{
     running.value=false;
   }
 
@@ -38,7 +49,8 @@ export default defineStore("store", ()=>{
     override,
     outputDir,
     running,
-    convertHandler
+    convertHandler,
+    stop
   };
 })
 

@@ -3,7 +3,7 @@
     <div class="menu w-full">
       <ButtonGroup class="w-full">
         <Button label="转换" icon="pi pi-play" size="small" class="flex-1" :disabled="store().running" @click="store().convertHandler" />
-        <Button label="停止" icon="pi pi-stop" size="small" class="flex-1" :disabled="!store().running" />
+        <Button label="停止" icon="pi pi-stop" size="small" class="flex-1" :disabled="!store().running" @click="store().stop" />
         <Button label="关闭" icon="pi pi-times" size="small" class="flex-1" @click="closeFiles" />
       </ButtonGroup>
     </div>
