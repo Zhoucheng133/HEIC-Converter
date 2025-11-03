@@ -78,7 +78,7 @@ const closeFiles=()=>{
   user-select: none;
   -webkit-user-select: none;
   display: grid;
-  grid-template-rows: 40px auto 40px 40px;
+  grid-template-rows: 40px auto 40px 35px;
   gap: 10px;
   height: 100vh;
   overflow: hidden;
