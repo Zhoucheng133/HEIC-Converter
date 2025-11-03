@@ -3,24 +3,14 @@
     <i class="pi pi-upload"></i>
     <div class="label">拖拽文件/目录到这里</div>
   </div>
-
-  <Dialog v-model:visible="visible" modal header="无法识别" :style="{ width: '20rem' }" :closable="false">
-    当前的文件/目录无法被处理
-    <div class="flex justify-end gap-2">
-        <Button type="button" label="好的"  @click="visible = false" size="small"></Button>
-    </div>
-</Dialog>
 </template>
 
 <script lang="ts" setup>
 import { listen } from '@tauri-apps/api/event';
-import { Button, Dialog } from 'primevue';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
 import store, { ConvertStatus } from '../store';
-
-let visible=ref(false);
-
+import { message } from '@tauri-apps/plugin-dialog';
 let unlisten: any;
 
 onMounted(async () => {
@@ -37,7 +27,7 @@ onMounted(async () => {
       const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
       
       if(resolveFiles.length==0){
-        visible.value=true;
+        await message('没有找到HEIC文件', { title: '未找到文件', kind: 'error' });
         return;
       }
 
