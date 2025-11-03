@@ -71,7 +71,7 @@ const closeFiles=()=>{
   padding-right: 20px;
 }
 .content{
-  overflow: scroll;
+  overflow: auto;
 }
 .list_page{
   padding: 10px;
