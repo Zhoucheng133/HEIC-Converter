@@ -1,5 +1,5 @@
 <template>
-  <SelectView v-if="store().path.length==0" />
+  <SelectView v-if="store().files.length==0" />
   <ListView v-else />
 </template>
 

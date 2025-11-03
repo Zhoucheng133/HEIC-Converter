@@ -5,7 +5,7 @@
   </div>
 
   <Dialog v-model:visible="visible" modal header="无法识别" :style="{ width: '20rem' }" :closable="false">
-    当前的文件无法被处理
+    当前的文件/目录无法被处理
     <div class="flex justify-end gap-2">
         <Button type="button" label="好的"  @click="visible = false" size="small"></Button>
     </div>
@@ -17,8 +17,6 @@ import { listen } from '@tauri-apps/api/event';
 import { Button, Dialog } from 'primevue';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
-import { Command } from '@tauri-apps/plugin-shell';
-import store from '../store';
 
 let visible=ref(false);
 
@@ -33,25 +31,18 @@ onMounted(async () => {
       Array.isArray(payload.paths) &&
       typeof payload.paths[0] === 'string'
     ) {
-      const file = payload.paths[0];
+      const targets = payload.paths;
 
-      const type = await invoke('check_path', { path: file });
+      const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
 
-      if(type=="file"){
-        if(!file.toLowerCase().endsWith(".heic")){
-          visible.value=true;
-          return;
-        }
+      console.log(resolveFiles);
+      
 
-        const command = Command.sidecar("binaries/core", [
-          file,
-          "/Users/zhoucheng/Downloads/输出",
-        ])
-        const output = await command.execute();
-        console.log(output);
-        
+      if(resolveFiles.length==0){
+        visible.value=true;
+        return;
       }
-      store().path=file;
+      
     }
   });
 });
