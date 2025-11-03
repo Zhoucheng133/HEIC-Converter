@@ -1,3 +1,4 @@
+import { message } from "@tauri-apps/plugin-dialog";
 import { Command } from "@tauri-apps/plugin-shell";
 import { defineStore } from "pinia";
 import { ref } from "vue";
@@ -29,14 +30,24 @@ export default defineStore("store", ()=>{
       return;
     }
     running.value=true;
+
+    let taskCount: number=files.value.length;
+
     for (const item of files.value) {
-      if(running.value){
+      if(item.status==ConvertStatus.done){
+        taskCount-=1;
+        continue;
+      }else if(running.value){
         item.status=await runConvert(item.path, outputDir.value, override.value, useExif.value);
       }else{
         break;
       }
     }
     running.value=false;
+    
+    if(taskCount==0){
+      await message('已完成所有的转换任务', { title: '无法运行', kind: 'error' });
+    }
   }
 
   const stop=()=>{
