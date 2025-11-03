@@ -32,11 +32,7 @@ fn resolve_files(paths: Vec<String>) -> Vec<String> {
         }
     }
 
-    if heic_files.is_empty() {
-        return vec!["".to_string()];
-    }
-
-    return heic_files
+    heic_files
 }
 
 
