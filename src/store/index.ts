@@ -10,6 +10,7 @@ export enum ConvertStatus{
 }
 
 interface TaskItem{
+  name: string,
   path: string,
   status: ConvertStatus,
 }

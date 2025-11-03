@@ -11,6 +11,7 @@ import { onBeforeUnmount, onMounted } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
 import store, { ConvertStatus } from '../store';
 import { message } from '@tauri-apps/plugin-dialog';
+import { basename } from '@tauri-apps/api/path';
 let unlisten: any;
 
 onMounted(async () => {
@@ -31,12 +32,18 @@ onMounted(async () => {
         return;
       }
 
-      store().files=resolveFiles.map((item)=>{
-        return {
-          path: item,
-          status: ConvertStatus.wait,
-        }
-      });
+      const files = await Promise.all(
+        resolveFiles.map(async (item) => {
+          const name = await basename(item);
+          return {
+            name,
+            path: item,
+            status: ConvertStatus.wait,
+          };
+        })
+      );
+
+      store().files = files;
       
     }
   });
