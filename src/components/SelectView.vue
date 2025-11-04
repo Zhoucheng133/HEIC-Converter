@@ -8,6 +8,10 @@
     </div>
     <div class="label">也可以拖拽文件/目录到这里</div>
   </div>
+  <div class="git">
+    <i class="bi bi-github mr-2"></i>
+    <div class="gitlabel" @click="toGitHub">本项目地址</div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -18,7 +22,12 @@ import store, { ConvertStatus } from '../store';
 import { message } from '@tauri-apps/plugin-dialog';
 import { basename } from '@tauri-apps/api/path';
 import { Button } from 'primevue';
+import { openUrl } from '@tauri-apps/plugin-opener';
 let unlisten: any;
+
+const toGitHub=()=>{
+  openUrl("https://github.com/Zhoucheng133/HEIC-Converter");
+}
 
 async function fileHandler(targets: Array<string>){
   const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
@@ -62,6 +71,19 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.gitlabel{
+  cursor: pointer;
+}
+.git{
+  position: fixed;
+  bottom: 10px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 13px;
+}
 .label{
   font-size: 15px;
   margin-bottom: 30px;
