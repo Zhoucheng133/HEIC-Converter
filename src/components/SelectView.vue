@@ -2,9 +2,9 @@
   <div class="select_bg">
     <i class="pi pi-upload"></i>
     <div class="flex mt-5" style="align-items: center;">
-      <Button variant="link">选择文件</Button>
+      <Button variant="link" @click="pickFiles(false)">选择文件</Button>
       <div>或</div>
-      <Button variant="link">选择目录</Button>
+      <Button variant="link" @click="pickFiles(true)">选择目录</Button>
     </div>
     <div class="label">也可以拖拽文件/目录到这里</div>
   </div>
@@ -23,10 +23,25 @@ import { message } from '@tauri-apps/plugin-dialog';
 import { basename } from '@tauri-apps/api/path';
 import { Button } from 'primevue';
 import { openUrl } from '@tauri-apps/plugin-opener';
+import { open } from '@tauri-apps/plugin-dialog';
 let unlisten: any;
 
 const toGitHub=()=>{
   openUrl("https://github.com/Zhoucheng133/HEIC-Converter");
+}
+
+async function pickFiles(useDir: boolean){
+  const targets = await open({
+    multiple: !useDir,
+    directory: useDir,
+  });
+  if(targets!=null){
+    if(useDir){
+      fileHandler([targets])
+    }else{
+      fileHandler([...targets]);
+    }
+  }
 }
 
 async function fileHandler(targets: Array<string>){
