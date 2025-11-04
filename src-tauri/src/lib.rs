@@ -10,7 +10,7 @@ fn resolve_files(paths: Vec<String>) -> Vec<String> {
 
         if path.is_file() {
             if let Some(ext) = path.extension().and_then(|e| e.to_str()) {
-                if ext.eq_ignore_ascii_case("heic") {
+                if ext.eq_ignore_ascii_case("heic") || ext.eq_ignore_ascii_case("heif") {
                     heic_files.push(path_str.clone());
                 }
             }
@@ -20,7 +20,7 @@ fn resolve_files(paths: Vec<String>) -> Vec<String> {
                     let entry_path = entry.path();
                     if entry_path.is_file() {
                         if let Some(ext) = entry_path.extension().and_then(|e| e.to_str()) {
-                            if ext.eq_ignore_ascii_case("heic") {
+                            if ext.eq_ignore_ascii_case("heic") || ext.eq_ignore_ascii_case("heif") {
                                 if let Some(path_str) = entry_path.to_str() {
                                     heic_files.push(path_str.to_string());
                                 }

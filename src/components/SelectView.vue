@@ -32,7 +32,7 @@ const toGitHub=()=>{
 async function fileHandler(targets: Array<string>){
   const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
   if(resolveFiles.length==0){
-    await message('没有找到HEIC文件', { title: '文件/目录无效', kind: 'error' });
+    await message('没有找到HEIC或HEIF文件', { title: '文件/目录无效', kind: 'error' });
     return;
   }
 
