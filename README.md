@@ -10,7 +10,7 @@
 
 核心组件[在这里](https://github.com/Zhoucheng133/HEIC-Converter-Core)
 
-<sup>*</sup>可能需要在重新编译，本项目中Release里的版本是在Windows11上编译的
+<sup>*</sup>可能需要重新编译，本项目中Release里的版本是在Windows11上编译的
 
 ## 截图
 
