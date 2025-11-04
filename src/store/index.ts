@@ -83,7 +83,12 @@ export async function runConvert(filePath: string, outputPath: string, override:
   }
 
   const command = Command.sidecar("binaries/core", args, {
-    encoding: "utf-8"
+    encoding: "utf-8",
+    env: {
+      "PYTHONUTF8": "1",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8"
+    }
   })
   const output = await command.execute();
   if(output.stdout.includes("Skipped")){
