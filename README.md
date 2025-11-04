@@ -4,7 +4,7 @@
 
 ![License](https://img.shields.io/badge/License-MIT-dark_green)
 
-**HEIC图片 -> Jpeg转换工具**
+**HEIC & HEIF图片 -> Jpeg转换工具**
 
 支持的Windows系统: Windows7<sup>*</sup>~ & macOS
 
