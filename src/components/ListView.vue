@@ -69,17 +69,20 @@ const closeFiles=()=>{
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;
+  margin-bottom: 10px;
 }
 .content{
   overflow: auto;
+  flex: 1;
+  margin-top: 10px;
 }
 .list_page{
   padding: 10px;
   user-select: none;
   -webkit-user-select: none;
   display: grid;
-  grid-template-rows: 40px auto 40px 35px;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
