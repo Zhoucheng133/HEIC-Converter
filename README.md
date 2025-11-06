@@ -4,6 +4,11 @@
 
 ![License](https://img.shields.io/badge/License-MIT-dark_green)
 
+<a href="https://apps.microsoft.com/detail/9ppfngbt79dv">
+	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
+</a>
+
+
 **HEIC & HEIF图片 -> Jpeg转换工具**
 
 支持的Windows系统: Windows7<sup>*</sup>~ & macOS
