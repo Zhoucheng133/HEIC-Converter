@@ -58,6 +58,7 @@ async function fileHandler(targets: Array<string>){
         name,
         path: item,
         status: ConvertStatus.wait,
+        message: "",
       };
     })
   );
