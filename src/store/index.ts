@@ -10,10 +10,16 @@ export enum ConvertStatus{
   error,
 }
 
+interface RunResult{
+  status: ConvertStatus,
+  message: string
+}
+
 interface TaskItem{
   name: string,
   path: string,
   status: ConvertStatus,
+  message: string,
 }
 
 export default defineStore("store", ()=>{
@@ -38,7 +44,11 @@ export default defineStore("store", ()=>{
         taskCount-=1;
         continue;
       }else if(running.value){
-        item.status=await runConvert(item.path, outputDir.value, override.value, useExif.value);
+        const result=await runConvert(item.path, outputDir.value, override.value, useExif.value);
+        item.status=result.status;
+        item.message=result.message;
+        console.log(result.message);
+        
       }else{
         break;
       }
@@ -65,7 +75,7 @@ export default defineStore("store", ()=>{
   };
 })
 
-export async function runConvert(filePath: string, outputPath: string, override: boolean, exif: boolean, quality: number=80): Promise<ConvertStatus> {
+export async function runConvert(filePath: string, outputPath: string, override: boolean, exif: boolean, quality: number=80): Promise<RunResult> {
 
   let args=[
     filePath,
@@ -92,10 +102,19 @@ export async function runConvert(filePath: string, outputPath: string, override:
   })
   const output = await command.execute();
   if(output.stdout.includes("Skipped")){
-    return ConvertStatus.exist;
+    return {
+      status: ConvertStatus.exist,
+      message: output.stdout
+    };
   }else if(output.stdout.includes("Failed")){
-    return ConvertStatus.error;
+    return {
+      status: ConvertStatus.error,
+      message: output.stdout
+    };
   }
   
-  return ConvertStatus.done;
+  return {
+    status: ConvertStatus.done,
+    message: output.stdout,
+  };
 }
