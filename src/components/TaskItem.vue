@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <Dialog v-model:visible="visible" modal header="任务信息" :closable="false" :style="{width: '20rem'}">
+  <Dialog v-model:visible="visible" modal header="任务信息" :closable="false" :style="{width: '20rem'}" :draggable="false" style="user-select: none;">
     <div class="info_content">
       <div>文件名称</div>
       <div>{{ props.taskItem.name }}</div>
@@ -50,6 +50,7 @@ let visible=ref(false);
   row-gap: 5px;
   overflow-wrap: anywhere;
   font-size: 14px;
+  align-items: center;
 }
 .name{
   width: 100%;
