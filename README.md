@@ -7,8 +7,7 @@
 <a href="https://apps.microsoft.com/detail/9ppfngbt79dv">
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
-(出了一些问题，Microsoft Store暂时不可用)
-
+ 
 **HEIC & HEIF图片 -> Jpeg转换工具**
 
 Avaliable in English
