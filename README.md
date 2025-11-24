@@ -8,10 +8,11 @@
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
 
-
 **HEIC & HEIF图片 -> Jpeg转换工具**
 
-支持的Windows系统: Windows7<sup>*</sup>~ & macOS
+Avaliable in English
+
+支持的Windows系统: Windows7*~ & macOS
 
 核心组件[在这里](https://github.com/Zhoucheng133/HEIC-Converter-Core)
 
@@ -19,9 +20,9 @@
 
 ## 截图
 
-## 在你的设备上配置HEIC Converter
-
 <img src="demo/截图.png" height=600 />
+
+## 在你的设备上配置HEIC Converter
 
 ### 准备工作
 
