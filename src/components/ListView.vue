@@ -2,9 +2,9 @@
   <div class="list_page">
     <div class="menu w-full">
       <ButtonGroup class="w-full">
-        <Button label="转换" icon="pi pi-play" size="small" class="flex-1" :disabled="store().running" @click="store().convertHandler" />
-        <Button label="停止" icon="pi pi-stop" size="small" class="flex-1" :disabled="!store().running" @click="store().stop" />
-        <Button label="关闭" icon="pi pi-times" size="small" class="flex-1" @click="closeFiles" />
+        <Button :label="$t('convert')" icon="pi pi-play" size="small" class="flex-1" :disabled="store().running" @click="store().convertHandler" />
+        <Button :label="$t('stop')" icon="pi pi-stop" size="small" class="flex-1" :disabled="!store().running" @click="store().stop" />
+        <Button :label="$t('close')" icon="pi pi-times" size="small" class="flex-1" @click="closeFiles" />
       </ButtonGroup>
     </div>
     <div class="content">
@@ -13,17 +13,17 @@
     <div class="options">
       <div class="option_item flex items-center gap-2">
         <Checkbox v-model="store().useExif" inputId="exif" binary @value-change="exifChangeHandler"/>
-        <label for="exif">保留EXIF信息</label>
+        <label for="exif">{{ $t("keepExif") }}</label>
       </div>
       <div class="option_item flex items-center gap-2">
         <Checkbox v-model="store().override" inputId="override" binary @value-change="overrideChangeHandler"/>
-        <label for="override">覆盖已有文件</label>
+        <label for="override">{{ $t("override") }}</label>
       </div>
     </div>
     <div class="output_area">
       <InputGroup>
         <InputText v-model="store().outputDir" size="small" :filled="true" />
-        <Button size="small" @click="selectOutput">选择</Button>
+        <Button size="small" @click="selectOutput">{{ $t("select") }}</Button>
       </InputGroup>
     </div>
   </div>

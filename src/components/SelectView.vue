@@ -2,15 +2,15 @@
   <div class="select_bg">
     <i class="pi pi-upload"></i>
     <div class="flex mt-5" style="align-items: center;">
-      <Button variant="link" @click="pickFiles(false)">选择文件</Button>
-      <div>或</div>
-      <Button variant="link" @click="pickFiles(true)">选择目录</Button>
+      <Button variant="link" @click="pickFiles(false)">{{ $t("selectFile") }}</Button>
+      <div>{{ $t("or") }}</div>
+      <Button variant="link" @click="pickFiles(true)">{{ $t("selectDir") }}</Button>
     </div>
-    <div class="label">也可以拖拽文件/目录到这里</div>
+    <div class="label">{{ $t("drop") }}</div>
   </div>
   <div class="git">
     <i class="bi bi-github mr-2"></i>
-    <div class="gitlabel" @click="toGitHub">本项目地址</div>
+    <div class="gitlabel" @click="toGitHub">{{ $t("githubLink") }}</div>
   </div>
 </template>
 
