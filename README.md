@@ -1,5 +1,9 @@
 # HEIC Converter
 
+Also available in English. Click [HERE](/documents/en.md) to view the English version of the README
+
+## 简介
+
 <img src="src-tauri/icons/icon.png" width="100px">
 
 ![License](https://img.shields.io/badge/License-MIT-dark_green)
@@ -8,21 +12,16 @@
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
  
-**HEIC & HEIF图片 -> Jpeg转换工具**
+`HEIC` & `HEIF`图片 → `Jpeg`转换工具
 
-Avaliable in English
-
-支持的Windows系统: Windows7*~ & macOS
-
+支持Windows和macOS  
 核心组件[在这里](https://github.com/Zhoucheng133/HEIC-Converter-Core)
-
-<sup>*</sup>可能需要重新编译，本项目中Release里的版本是在Windows11上编译的
 
 ## 截图
 
 <img src="demo/截图.png" height=600 />
 
-## 在你的设备上配置HEIC Converter
+## 在你的设备上配置
 
 ### 准备工作
 
