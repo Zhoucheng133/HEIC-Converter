@@ -24,7 +24,10 @@ import { basename } from '@tauri-apps/api/path';
 import { Button } from 'primevue';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { open } from '@tauri-apps/plugin-dialog';
+import { useI18n } from 'vue-i18n';
 let unlisten: any;
+
+const { t } = useI18n();
 
 const toGitHub=()=>{
   openUrl("https://github.com/Zhoucheng133/HEIC-Converter");
@@ -47,7 +50,7 @@ async function pickFiles(useDir: boolean){
 async function fileHandler(targets: Array<string>){
   const resolveFiles: Array<string> = await invoke('resolve_files', { paths: targets });
   if(resolveFiles.length==0){
-    await message('没有找到HEIC或HEIF文件', { title: '文件/目录无效', kind: 'error' });
+    await message(t('noFileFound'), { title: t('invalidFileDir'), kind: 'error' });
     return;
   }
 

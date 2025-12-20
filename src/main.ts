@@ -57,7 +57,11 @@ const i18n=createI18n({
       "fileName": "文件名称",
       "filePath": "文件路径",
       "status": "当前状态",
-      "outputInfo": "输出信息"
+      "outputInfo": "输出信息",
+      "noFileFound": "没有找到匹配的文件",
+      "invalidFileDir": "文件/目录无效",
+      "cantRun": "无法运行",
+      "finishedAlready": "已完成所有的转换任务",
     },
 
     "zh-TW": {
@@ -81,11 +85,15 @@ const i18n=createI18n({
       "fileName": "文件名稱",
       "filePath": "文件路徑",
       "status": "當前狀態",
-      "outputInfo": "輸出資訊"
+      "outputInfo": "輸出資訊",
+      "noFileFound": "沒有找到匹配的文件",
+      "invalidFileDir": "文件/目錄無效",
+      "cantRun": "無法運行",
+      "finishedAlready": "已完成所有的轉換任務",
     },
 
     "zh-HK": {
-      "selectFile": "選擇檔案",
+      "selectFile": "選擇文件",
       "or": "或",
       "selectDir": "選擇目錄",
       "drop": "亦可將檔案／目錄拖放到此處",
@@ -105,7 +113,11 @@ const i18n=createI18n({
       "fileName": "檔案名稱",
       "filePath": "檔案路徑",
       "status": "當前狀態",
-      "outputInfo": "輸出資訊"
+      "outputInfo": "輸出資訊",
+      "noFileFound": "沒有找到匹配的文件",
+      "invalidFileDir": "文件/目錄無效",
+      "cantRun": "無法運行",
+      "finishedAlready": "已完成所有的轉換任務",
     },
 
     "en": {
@@ -129,7 +141,11 @@ const i18n=createI18n({
       "fileName": "File Name",
       "filePath": "File Path",
       "status": "Current Status",
-      "outputInfo": "Output"
+      "outputInfo": "Output",
+      "noFileFound": "No matching files found",
+      "invalidFileDir": "The file/directory is invalid",
+      "cantRun": "Unable to run",
+      "finishedAlready": "All conversion tasks have been completed",
     }
   }
 })

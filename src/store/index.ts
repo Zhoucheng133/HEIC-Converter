@@ -2,6 +2,7 @@ import { message } from "@tauri-apps/plugin-dialog";
 import { Command } from "@tauri-apps/plugin-shell";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 export enum ConvertStatus{
   wait,
@@ -24,6 +25,7 @@ interface TaskItem{
 
 export default defineStore("store", ()=>{
   let files=ref<TaskItem[]>([]);
+  const { t } = useI18n();
 
   let useExif=ref(true);
   let override=ref(false);
@@ -56,7 +58,7 @@ export default defineStore("store", ()=>{
     running.value=false;
     
     if(taskCount==0){
-      await message('已完成所有的转换任务', { title: '无法运行', kind: 'error' });
+      await message(t('finishedAlready'), { title: t('cantRun'), kind: 'error' });
     }
   }
 
