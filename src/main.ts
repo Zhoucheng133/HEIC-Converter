@@ -34,7 +34,7 @@ const userLang = navigator.language;
 const i18n=createI18n({
   legacy: false,
   locale: userLang,
-  fallbackLocale: 'en',
+  fallbackLocale: 'en-US',
   messages: {
     "zh-CN": {
       "selectFile": "选择文件",
@@ -120,7 +120,7 @@ const i18n=createI18n({
       "finishedAlready": "已完成所有的轉換任務",
     },
 
-    "en": {
+    "en-US": {
       "selectFile": "Select File",
       "or": "or",
       "selectDir": "Select Directory",
