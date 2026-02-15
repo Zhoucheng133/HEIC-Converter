@@ -8,6 +8,7 @@ import store from './store';
 import SelectView from './components/SelectView.vue';
 import ListView from './components/ListView.vue';
 import { onMounted } from 'vue';
+import { getCurrentWindow } from '@tauri-apps/api/window';
 
 onMounted(()=>{
   const output=localStorage.getItem("output");
@@ -22,6 +23,7 @@ onMounted(()=>{
   if(override){
     store().override=override=='true';
   }
+  getCurrentWindow().show();
 })
 
 </script>

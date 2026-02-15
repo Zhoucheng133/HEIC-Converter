@@ -18,7 +18,8 @@
         "center": true,
         "hiddenTitle": true,
         "titleBarStyle": "Transparent",
-        "resizable": false
+        "resizable": false,
+        "visible": false
       }
     ],
     "security": {
