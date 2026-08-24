@@ -19,7 +19,7 @@ Core component [available here](https://github.com/Zhoucheng133/HEIC-Converter-C
 
 ## Screenshots
 
-<img src="../demo/截图.png" height=600 />
+<img src="../demo/截图2.png" height=600 />
 
 ## Set Up on Your Device
 

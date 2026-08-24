@@ -19,7 +19,7 @@ Also available in English. Click [HERE](/documents/en.md) to view the English ve
 
 ## 截图
 
-<img src="demo/截图.png" height=600 />
+<img src="demo/截图1.png" height=600 />
 
 ## 在你的设备上配置
 
