@@ -62,6 +62,10 @@ const i18n=createI18n({
       "invalidFileDir": "文件/目录无效",
       "cantRun": "无法运行",
       "finishedAlready": "已完成所有的转换任务",
+      "lang.zhCN": "简体中文",
+      "lang.zhTW": "繁體中文（台灣）",
+      "lang.zhHK": "繁體中文（香港）",
+      "lang.enUS": "English",
     },
 
     "zh-TW": {
@@ -90,6 +94,10 @@ const i18n=createI18n({
       "invalidFileDir": "文件/目錄無效",
       "cantRun": "無法運行",
       "finishedAlready": "已完成所有的轉換任務",
+      "lang.zhCN": "简体中文",
+      "lang.zhTW": "繁體中文（台灣）",
+      "lang.zhHK": "繁體中文（香港）",
+      "lang.enUS": "English",
     },
 
     "zh-HK": {
@@ -118,6 +126,10 @@ const i18n=createI18n({
       "invalidFileDir": "文件/目錄無效",
       "cantRun": "無法運行",
       "finishedAlready": "已完成所有的轉換任務",
+      "lang.zhCN": "简体中文",
+      "lang.zhTW": "繁體中文（台灣）",
+      "lang.zhHK": "繁體中文（香港）",
+      "lang.enUS": "English",
     },
 
     "en-US": {
@@ -146,6 +158,10 @@ const i18n=createI18n({
       "invalidFileDir": "The file/directory is invalid",
       "cantRun": "Unable to run",
       "finishedAlready": "All conversion tasks have been completed",
+      "lang.zhCN": "简体中文",
+      "lang.zhTW": "繁體中文（台灣）",
+      "lang.zhHK": "繁體中文（香港）",
+      "lang.enUS": "English",
     }
   }
 })

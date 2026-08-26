@@ -1,4 +1,7 @@
 <template>
+  <div class="lang-selector">
+    <Select v-model="selectedLocale" :options="langOptions" optionLabel="label" optionValue="value" @change="changeLocale" size="small" />
+  </div>
   <div class="select_bg">
     <i class="pi pi-upload"></i>
     <div class="flex mt-5" style="align-items: center;">
@@ -16,18 +19,30 @@
 
 <script lang="ts" setup>
 import { listen } from '@tauri-apps/api/event';
-import { onBeforeUnmount, onMounted } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
 import store, { ConvertStatus } from '../store';
 import { message } from '@tauri-apps/plugin-dialog';
 import { basename } from '@tauri-apps/api/path';
-import { Button } from 'primevue';
+import { Button, Select } from 'primevue';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { open } from '@tauri-apps/plugin-dialog';
 import { useI18n } from 'vue-i18n';
 let unlisten: any;
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+
+const langOptions = [
+  { label: t('lang.zhCN'), value: 'zh-CN' },
+  { label: t('lang.zhTW'), value: 'zh-TW' },
+  { label: t('lang.zhHK'), value: 'zh-HK' },
+  { label: t('lang.enUS'), value: 'en-US' },
+];
+const selectedLocale = ref(locale.value);
+
+function changeLocale() {
+  locale.value = selectedLocale.value;
+}
 
 const toGitHub=()=>{
   openUrl("https://github.com/Zhoucheng133/HEIC-Converter");
@@ -90,6 +105,12 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.lang-selector{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
 .gitlabel{
   cursor: pointer;
 }
