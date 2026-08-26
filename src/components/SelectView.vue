@@ -42,6 +42,7 @@ const selectedLocale = ref(locale.value);
 
 function changeLocale() {
   locale.value = selectedLocale.value;
+  localStorage.setItem('locale', selectedLocale.value);
 }
 
 const toGitHub=()=>{

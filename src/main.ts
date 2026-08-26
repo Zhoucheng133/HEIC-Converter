@@ -29,7 +29,8 @@ const MyPreset = definePreset(Aura, {
     }
   }
 });
-const userLang = navigator.language;
+const savedLang = localStorage.getItem('locale');
+const userLang = savedLang || navigator.language;
 
 const i18n=createI18n({
   legacy: false,
