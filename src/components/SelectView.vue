@@ -1,7 +1,13 @@
 <template>
-  <div class="lang-selector">
-    <i class="bi bi-globe mr-3"></i>
-    <Select v-model="selectedLocale" :options="langOptions" optionLabel="label" optionValue="value" @change="changeLocale" size="small" />
+  <div class="top-right">
+    <div class="control">
+      <i class="bi bi-circle-half mr-3"></i>
+      <Select v-model="themeMode" :options="themeOptions" optionLabel="label" optionValue="value" @change="changeTheme" size="small" />
+    </div>
+    <div class="control">
+      <i class="bi bi-globe mr-3"></i>
+      <Select v-model="selectedLocale" :options="langOptions" optionLabel="label" optionValue="value" @change="changeLocale" size="small" />
+    </div>
   </div>
   <div class="select_bg">
     <i class="pi pi-upload"></i>
@@ -20,7 +26,7 @@
 
 <script lang="ts" setup>
 import { listen } from '@tauri-apps/api/event';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
 import store, { ConvertStatus } from '../store';
 import { message } from '@tauri-apps/plugin-dialog';
@@ -29,17 +35,28 @@ import { Button, Select } from 'primevue';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { open } from '@tauri-apps/plugin-dialog';
 import { useI18n } from 'vue-i18n';
+import { themeMode, setThemeMode } from '../theme';
 let unlisten: any;
 
 const { t, locale } = useI18n();
 
 const langOptions = [
-  { label: t('lang.zhCN'), value: 'zh-CN' },
-  { label: t('lang.zhTW'), value: 'zh-TW' },
-  { label: t('lang.zhHK'), value: 'zh-HK' },
-  { label: t('lang.enUS'), value: 'en-US' },
+  { label: '简体中文', value: 'zh-CN' },
+  { label: '繁體中文 (台灣)', value: 'zh-TW' },
+  { label: '繁體中文 (香港)', value: 'zh-HK' },
+  { label: 'English', value: 'en-US' },
 ];
 const selectedLocale = ref(locale.value);
+
+const themeOptions = computed(() => [
+  { label: t('theme.light'), value: 'light' },
+  { label: t('theme.dark'), value: 'dark' },
+  { label: t('theme.auto'), value: 'auto' },
+]);
+
+function changeTheme() {
+  setThemeMode(themeMode.value);
+}
 
 function changeLocale() {
   locale.value = selectedLocale.value;
@@ -107,11 +124,20 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.lang-selector{
+.top-right{
+  user-select: none;
+  -webkit-user-select: none;
   position: fixed;
   top: 10px;
   right: 10px;
+  left: 10px;
   z-index: 10;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.control{
   display: flex;
   align-items: center;
 }

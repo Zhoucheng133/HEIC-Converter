@@ -24,8 +24,7 @@
   "invalidFileDir": "文件/目录无效",
   "cantRun": "无法运行",
   "finishedAlready": "已完成所有的转换任务",
-  "lang.zhCN": "简体中文",
-  "lang.zhTW": "繁體中文（台灣）",
-  "lang.zhHK": "繁體中文（香港）",
-  "lang.enUS": "English"
+  "theme.light": "浅色",
+  "theme.dark": "深色",
+  "theme.auto": "自动"
 }

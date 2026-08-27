@@ -8,6 +8,7 @@ import { definePreset } from "@primeuix/themes";
 import 'primeicons/primeicons.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import { createI18n } from "vue-i18n";
+import { initTheme } from "./theme";
 import zhCN from "./locales/zh-CN.json";
 import zhTW from "./locales/zh-TW.json";
 import zhHK from "./locales/zh-HK.json";
@@ -53,8 +54,12 @@ const app = createApp(App);
 app.use(pinia)
 app.use(PrimeVue, {
   theme: {
-    preset: MyPreset
+    preset: MyPreset,
+    options: {
+      darkModeSelector: '.dark',
+    }
   }
 });
 app.use(i18n);
+initTheme();
 app.mount('#app');
