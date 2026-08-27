@@ -1,5 +1,6 @@
 <template>
   <div class="lang-selector">
+    <i class="bi bi-globe mr-3"></i>
     <Select v-model="selectedLocale" :options="langOptions" optionLabel="label" optionValue="value" @change="changeLocale" size="small" />
   </div>
   <div class="select_bg">
@@ -111,6 +112,8 @@ onBeforeUnmount(() => {
   top: 10px;
   right: 10px;
   z-index: 10;
+  display: flex;
+  align-items: center;
 }
 .gitlabel{
   cursor: pointer;
