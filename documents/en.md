@@ -11,6 +11,8 @@ Also available in English. Click [HERE](/documents/en.md) to view the English ve
 <a href="https://apps.microsoft.com/detail/9ppfngbt79dv">
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
+
+> **Note**: Due to Microsoft's policy changes, binary files generated using Nuitka are flagged by Microsoft as "unwanted and malicious", so the Microsoft Store version will no longer be updated.
  
 `HEIC` & `HEIF` Image → `JPEG` Conversion Tool
 

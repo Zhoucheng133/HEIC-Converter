@@ -11,6 +11,8 @@ Also available in English. Click [HERE](/documents/en.md) to view the English ve
 <a href="https://apps.microsoft.com/detail/9ppfngbt79dv">
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
+
+> **注意**：由于微软修改了政策，使用 Nuitka 生成的二进制文件被微软认定为“不需要并且有害”，因此微软商店的版本不再更新。
  
 `HEIC` & `HEIF`图片 → `Jpeg`转换工具
 
